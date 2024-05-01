@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-image = cv2.imread("1.jpg")
+image = cv2.imread("input.jpg")
 resized_image = cv2.resize(image, (512, 512))
 
 gray = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
