@@ -3,26 +3,24 @@ import numpy as np
 
 from convertBW import *
 from convertFourier import *
-from convertLog import *
 from contrast import *
 
 image = cv2.imread("input.jpg")
-resized_image = cv2.resize(image, (512, 512))
+image = cv2.resize(image, (512, 512))
 
-gray = cv2.cvtColor(resized_image, cv2.COLOR_BGR2GRAY)
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
 bw = gray.copy()
 convertBW(bw)
 
-magnitude = convertFourier(gray)
+magnitude = convertFourier(gray, False)
+log = convertFourier(gray, True)
 
-log = magnitude.copy()
-convertLog(log, 1)
-
-cv2.imshow('Color', resized_image)
+cv2.imshow('Color', image)
 resultsImg1 = np.concatenate((gray, bw), axis=1)
-resultsImg2 = np.concatenate((magnitude, log), axis=1)
 cv2.imshow('results', resultsImg1)
+
+resultsImg2 = np.concatenate((magnitude, log), axis=1)
 cv2.imshow('results2', resultsImg2)
 
 image2 = cv2.imread("input2.png")
