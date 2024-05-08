@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-from convertBW import *
-from convertFourier import *
-from contrast import *
+from transformers.convertBW import *
+from transformers.convertFourier import *
+from transformers.contrast import *
 
-image = cv2.imread("input.jpg")
+image = cv2.imread("./inputs/input.jpg")
 image = cv2.resize(image, (512, 512))
 
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -17,7 +17,7 @@ convertBW(bw)
 magnitude = convertFourier(gray, False)
 log = convertFourier(gray, True)
 
-image2 = cv2.imread("input2.png")
+image2 = cv2.imread("./inputs/input2.png")
 image2 = cv2.resize(image2, (512, 512))
 gray2 = cv2.cvtColor(image2, cv2.COLOR_BGR2GRAY)
 contrast(gray2)
