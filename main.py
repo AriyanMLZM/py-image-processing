@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 
 from transformers.convertBW import *
 from transformers.convertFourier import *
+from transformers.convertLog import *
 from transformers.contrast import *
 
 image = cv2.imread("./inputs/input.jpg")
@@ -15,7 +16,7 @@ bw = gray.copy()
 convertBW(bw)
 
 magnitude = convertFourier(gray, False)
-log = convertFourier(gray, True)
+log = convertLog(magnitude)
 
 image2 = cv2.imread("./inputs/input2.png")
 image2 = cv2.resize(image2, (512, 512))
